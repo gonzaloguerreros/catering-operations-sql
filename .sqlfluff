@@ -1,0 +1,40 @@
+# .sqlfluff
+# SQLFluff configuration for catering-operations-sql.
+# Run: sqlfluff lint queries/ schema/ data/
+# Fix:  sqlfluff fix  queries/ schema/ data/
+#
+# Style guide: Mazur SQL Style Guide (https://www.sqlstyle.guide)
+# complemented by GitLab Data Team SQL Style Guide.
+
+[sqlfluff]
+dialect            = postgres
+templater          = jinja
+max_line_length    = 100
+indent_unit        = space
+tab_space_size     = 4
+
+# Exclude generated files from linting
+exclude_rules      = RF04   # allow * in SELECT COUNT(*) contexts
+
+[sqlfluff:indentation]
+indent_unit        = space
+indented_joins     = false
+indented_ctes      = false
+template_blocks_indent = false
+
+[sqlfluff:rules:capitalisation.keywords]
+# SQL keywords UPPERCASE — identifiers lowercase (Mazur style)
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = upper
+
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_lines  = true
+ignore_comment_clauses = true
