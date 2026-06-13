@@ -76,6 +76,12 @@ Six tables, normalised to 3NF. ENUMs enforce domain integrity on `order_status`,
 
 ---
 
+## Snowflake Compatibility
+
+These queries were written and tested in **PostgreSQL 15**, but are directly portable to **Snowflake** — the syntax for CTEs, window functions (`LAG`, `NTILE`, `PERCENT_RANK`), and conditional aggregation is identical across both dialects. The main difference is infrastructure: Snowflake replaces `psql` with Snowsight or `snowsql`, and `ENUM` types are replaced with `VARCHAR` with `CHECK` constraints. All business logic and analytical patterns apply unchanged.
+
+---
+
 ## How to Run
 
 **Requirements:** PostgreSQL 15+
